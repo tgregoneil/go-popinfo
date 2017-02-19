@@ -1,0 +1,22 @@
+{
+  "name": "go-popinfo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "keywords": [],
+  "author": "T. Greg O'Neil <go22.npm@gmail.com> (http://tgregoneil.com)",
+  "license": "ISC",
+  "readme": "readme.md",
+  "homepage": "https://github.com/tgregoneil/REPO",
+  "repository": {
+    "url": "git+ssh://github.com/tgregoneil/REPO.git",
+    "type": "git"
+  },
+  "dependencies": {},
+  "bugs": {
+    "url": "https://github.com/tgregoneil/REPO/issues"
+  }
+}
