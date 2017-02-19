@@ -55,4 +55,5 @@ setTimeout (
 
 ### Results
 
-Observe two popups that are initially displayed. Then, one disappears after 3 seconds and the second one 2 seconds later by clicking <a href: >here</a>
+Observe two popups that are initially displayed. Then, one disappears after 3 seconds and the second one 2 seconds later by clicking:
+<a href="http://htmlpreview.github.io/?https://github.com/tgregoneil/go-popinfo/blob/master/index.html">here</a>
