@@ -36,8 +36,9 @@ _.setPopupStyle = () => {
     
     var as = _.arrowSize;
 
-    var popupStyle = {style: 
-    '.popup {' +
+    var popupStyle = [
+        {rm: '#stylepopinfo'},
+        {style: '.popup {' +
         'position: relative;' +
         'display: inline-block;' +
         'border: 1px solid blue;' +
@@ -45,8 +46,11 @@ _.setPopupStyle = () => {
         'background-color: #ebf2f2;' +
         'font-size: 12px;' +
     '}' +
+    '.popupwrap {' +
+        'position: absolute;' +
+    '}' +
     '.popupnovis {' +
-        'visibility: hidden;' +
+        'display: none;' +
     '}' +
     '.arrow {' +
         'position: absolute;' +
@@ -66,8 +70,9 @@ _.setPopupStyle = () => {
         'border-color: #ebf2f2 transparent transparent transparent;' +
         'bottom: -' + (2*as - 4) + 'px;' +
         'z-index: 1;' +
-    '}'
-    , parent: 'head'};
+    '}', 
+    id: 'stylepopinfo', parent: 'head'}
+    ];
 
     _.dpp (popupStyle);
 
@@ -81,9 +86,10 @@ _.setPopupStyle = () => {
 var P = {};
 
 //---------------------
-P.createPopupDisplay = (jqOb, dispstr, options) => {
+P.createPopupDisplay = (jqObIn, dispstr, options) => {
     
-    jqOb = typeof jqOb === 'string' ? $(jqOb) : jqOb;
+    jqOb = typeof jqObIn === 'string' ? $(jqObIn) : jqObIn;
+    IdjqOb = '#' + jqOb [0].id;
 
     dispStrs = dispstr.split ('\n');
 
@@ -117,7 +123,9 @@ P.createPopupDisplay = (jqOb, dispstr, options) => {
     idAb = '#' + idAb;
     idAf = '#' + idAf;
 
-    var popOb = {div: [dispOb, divArrowBorder, divArrowFiller], class: 'popup'}
+    //var popOb = {div: [dispOb, divArrowBorder, divArrowFiller], class: 'popup', after: IdjqOb};
+    var popObRel = {div: [dispOb, divArrowBorder, divArrowFiller], class: 'popup'};
+    var popOb = {div: popObRel, class: 'popupwrap'};
     var IdPopOb = _.dpp (popOb);
     var posPopup = _.getPosDim (IdPopOb);
 
@@ -146,7 +154,7 @@ P.createPopupDisplay = (jqOb, dispstr, options) => {
 //---------------------
 P.hidePopups = (Id) => {
     
-    var sel = Id ? Id : '.popup';
+    var sel = Id ? Id : '.popupwrap';
 
     $(sel)
     .addClass ('popupnovis');
@@ -158,7 +166,7 @@ P.hidePopups = (Id) => {
 //---------------------
 P.showPopups = (Id) => {
     
-    var sel = Id ? Id : '.popup';
+    var sel = Id ? Id : '.popupwrap';
 
     $(sel)
     .removeClass ('popupnovis');
